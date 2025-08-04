@@ -2,11 +2,13 @@ import streamlit as st
 import requests
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings  
+from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
-from secret_api_keys import OPENAI_API_KEY
+
+# Load API Key from Streamlit Secrets
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 # Load OpenAI LLM
 def load_llm():
